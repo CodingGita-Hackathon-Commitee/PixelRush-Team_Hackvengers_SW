@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SurplusLink — My Listings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <img src="../Page-1/logo.png" alt="SurplusLink logo" class="brand-logo" />
+          <span class="brand-name">SurplusLink</span>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#">Dashboard</a>
+          <a href="#" class="active">My Listings</a>
+          <a href="#">Requests</a>
+          <a href="#">Insights</a>
+        </nav>
+
+        <div class="account-chip">
+          <span class="avatar" aria-label="User profile">A</span>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="form-panel">
+          <div class="title-block">
+            <h1>Create surplus listing</h1>
+            <p>
+              Post your good food surplus and help reduce food waste. It only takes a few
+              minutes.
+            </p>
+          </div>
+
+          <div class="stepper" aria-label="Listing steps">
+            <div class="step done">
+              <span>1</span>
+              <small>The Food</small>
+            </div>
+            <div class="step done">
+              <span>2</span>
+              <small>The Logistics</small>
+            </div>
+            <div class="step current">
+              <span>3</span>
+              <small>Review &amp; Publish</small>
+            </div>
+          </div>
+
+          <div class="listing-form">
+            <div class="section-header">
+              <span class="section-number">1</span>
+              <span>THE FOOD</span>
+            </div>
+
+            <div class="field-group">
+              <label for="food-name">Food name *</label>
+              <input id="food-name" type="text" value="Assorted Bakery Box" />
+            </div>
+
+            <div class="tag-row">
+              <span class="tag active">Bakery</span>
+              <span class="tag">Fresh</span>
+              <span class="tag">Pastries</span>
+              <span class="tag">Organic</span>
+              <span class="tag">Gluten Free</span>
+              <span class="tag">Vegan</span>
+              <span class="tag">Dairy</span>
+            </div>
+
+            <div class="picture-box">
+              <div class="drop-area">
+                <div class="upload-icon"></div>
+                <p>Drag &amp; drop photos here</p>
+                <span>or click to browse</span>
+              </div>
+              <button type="button" class="mini-btn">Add more</button>
+            </div>
+
+            <div class="field-group compact">
+              <label for="quantity">Quantity *</label>
+              <div class="inline-field small-field">
+                <button type="button" class="spin">−</button>
+                <input id="quantity" type="text" value="12" />
+                <button type="button" class="spin">+</button>
+              </div>
+            </div>
+
+            <div class="field-grid two-col">
+              <div class="field-group">
+                <label>Dietary needs</label>
+                <div class="select-box">Vegetarian</div>
+              </div>
+              <div class="field-group">
+                <label>Allergen details</label>
+                <div class="select-box">Contains gluten</div>
+              </div>
+            </div>
+
+            <div class="allergy-chips">
+              <span class="chip chip-green">Gluten</span>
+              <span class="chip">Dairy</span>
+              <span class="chip">Nuts</span>
+              <span class="chip">Soy</span>
+            </div>
+
+            <div class="section-header logistics">
+              <span class="section-number">2</span>
+              <span>THE LOGISTICS</span>
+            </div>
+
+            <div class="field-grid two-col">
+              <div class="field-group">
+                <label>Pickup date *</label>
+                <div class="select-box">Today, 8 Aug 2025</div>
+              </div>
+              <div class="field-group">
+                <label>Pickup time *</label>
+                <div class="select-box">5:30 PM</div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Pickup location *</label>
+              <input type="text" value="12, MGD, Aabd, Gulshan, ..." />
+            </div>
+
+            <div class="field-grid two-col small-field-grid">
+              <div class="field-group">
+                <label>Accessibility</label>
+                <div class="select-box">Wheelchair access</div>
+              </div>
+              <div class="field-group">
+                <label>Price / item *</label>
+                <div class="select-box">₹ 14.90</div>
+              </div>
+            </div>
+
+            <div class="field-grid two-col small-field-grid">
+              <div class="field-group">
+                <label>Verification</label>
+                <div class="select-box">Verified</div>
+              </div>
+            </div>
+
+            <div class="footer-actions">
+              <button type="button" class="btn-link">Save as draft</button>
+              <button type="button" class="btn-primary">Next: Review &amp; Publish</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="preview-panel">
+          <div class="preview-card">
+            <div class="preview-photo-wrap">
+              <div class="preview-photo"></div>
+            </div>
+
+            <div class="preview-summary">
+              <div class="summary-row">
+                <div>
+                  <span class="small-label">Assorted Bakery Box</span>
+                </div>
+                <span class="star-tag">•</span>
+              </div>
+
+              <div class="summary-meta">
+                <span>Bakery</span>
+                <span>Vegetarian</span>
+                <span>12 items</span>
+              </div>
+
+              <div class="address-block">
+                <span class="tiny-label">Pickup</span>
+                <p>Today, 5:30 PM — 10 mins</p>
+                <p>12, MGD Road, Ganjpura, Haryana — 122003</p>
+              </div>
+
+              <div class="price-block">
+                <div class="price-box">
+                  <span class="currency">₹</span>
+                  <span class="amount">149</span>
+                  <span class="per-item">/ box</span>
+                </div>
+                <button type="button" class="request-btn">Request</button>
+              </div>
+            </div>
+
+            <div class="score-card">
+              <div class="score-header">
+                <h4>Listing quality score</h4>
+                <div class="score-pill">85%</div>
+              </div>
+
+              <ul class="score-list">
+                <li class="good">Complete details</li>
+                <li class="good">Safety &amp; dietary info</li>
+                <li class="good">Pickup location</li>
+                <li class="good">Image &amp; freshness</li>
+              </ul>
+            </div>
+
+            <div class="mini-status-grid">
+              <div class="status-box ok">
+                <span class="status-label">Food safety</span>
+                <strong>✓</strong>
+              </div>
+              <div class="status-box ok">
+                <span class="status-label">Refrigeration</span>
+                <strong>✓</strong>
+              </div>
+              <div class="status-box ok">
+                <span class="status-label">Pickup ready</span>
+                <strong>✓</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo" aria-label="SurplusLink home">
+                        <img src="../Page-1/logo.png" alt="" class="footer-logo-image">
+                        <span>SurplusLink</span>
+                    </a>
+                    <p>Real-time coordination for surplus food.<br>Good food, zero waste, perfect timing.</p>
+                    <div class="footer-socials" aria-label="Social media">
+                        <a href="#" aria-label="SurplusLink on X">X</a>
+                        <a href="#" aria-label="SurplusLink on LinkedIn">in</a>
+                        <a href="#" aria-label="SurplusLink on Instagram">◎</a>
+                    </div>
+                </div>
+
+                <nav class="footer-column" aria-label="Product links">
+                    <h2>Product</h2>
+                    <a href="#">Discover food</a>
+                    <a href="#">Live map</a>
+                    <a href="#">QR handover</a>
+                    <a href="#">Analytics</a>
+                    <a href="#">Pricing</a>
+                </nav>
+
+                <nav class="footer-column" aria-label="Provider links">
+                    <h2>For Providers</h2>
+                    <a href="#">List surplus</a>
+                    <a href="#">Templates</a>
+                    <a href="#">Tax reports</a>
+                    <a href="#">Restaurant guide</a>
+                </nav>
+
+                <nav class="footer-column" aria-label="Recipient links">
+                    <h2>For Recipients</h2>
+                    <a href="#">Find food nearby</a>
+                    <a href="#">Get verified</a>
+                    <a href="#">NGO program</a>
+                    <a href="#">Fair-share policy</a>
+                </nav>
+
+                <nav class="footer-column" aria-label="Company links">
+                    <h2>Company</h2>
+                    <a href="#">About</a>
+                    <a href="#">Safety guidelines</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 SurplusLink. All rights reserved.</p>
+                <span class="footer-language">English (IN)</span>
+                <p class="footer-status"><span></span> System status: all operational</p>
+            </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
