@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurplusLink | Smart Food Surplus Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sidebar-fixed {
+            position: sticky;
+            top: 88px;
+            height: calc(100vh - 100px);
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Glass Navigation -->
+    <nav class="glass-nav px-4 py-3 md:px-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3 md:gap-5">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <img src="logo.png" alt="SurplusLink logo" class="brand-logo w-10 h-10 rounded-xl object-contain shadow-sm transition-transform group-hover:scale-105">
+                    <span class="text-2xl font-bold tracking-tight font-display text-slate-800">SurplusLink</span>
+                </div>
+
+                <div class="hidden lg:flex items-center gap-2 text-sm font-medium text-slate-600 bg-white/70 px-3.5 py-2 rounded-full border border-slate-200 shadow-sm">
+                    <span class="text-emerald-600 text-base">📍</span>
+                    <span>Satellite, Ahmedabad</span>
+                    <span class="text-slate-300">|</span>
+                    <span>Within 5 km</span>
+                </div>
+            </div>
+
+            <div class="hidden md:block relative flex-1 max-w-xl mx-6">
+                <input type="text" placeholder="Search surplus food..."
+                       class="nav-search w-full pl-11 pr-4 py-2.5 text-sm transition-all">
+                <span class="absolute left-4 top-[0.7rem] text-slate-400">🔍</span>
+            </div>
+
+            <div class="flex items-center gap-2 md:gap-3">
+                <a href="#" class="nav-link hidden sm:inline-flex">Home</a>
+                <a href="#" class="nav-link hidden lg:inline-flex">Orders</a>
+                <a href="#" class="nav-link hidden xl:inline-flex">Insights</a>
+                <button class="nav-cta">List Surplus</button>
+                <div class="nav-pill hidden md:flex">
+                    <span class="text-xs">🛡️</span>
+                    <span>Verified NGO</span>
+                </div>
+                <div class="nav-avatar" aria-label="User profile">A</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Filter Header -->
+    <div class="bg-white border-b border-slate-100 px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <div class="flex bg-slate-100 p-1 rounded-lg gap-1">
+                <button class="px-4 py-1.5 text-xs font-bold rounded-md bg-white shadow-sm text-slate-900 transition-all">List View</button>
+                <button class="px-4 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-800 transition-all">Map View</button>
+            </div>
+            <div class="h-6 w-px bg-slate-200 mx-2"></div>
+            <div class="flex gap-2">
+                <button class="px-4 py-1.5 text-xs font-medium rounded-full bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition-all">All</button>
+                <button class="px-4 py-1.5 text-xs font-medium rounded-full bg-emerald-600 text-white shadow-md">NGO Bulk</button>
+                <button class="px-4 py-1.5 text-xs font-medium rounded-full bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition-all">Veg Only</button>
+                <button class="px-4 py-1.5 text-xs font-medium rounded-full bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition-all">Bakery</button>
+            </div>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-medium text-slate-400">
+            <button class="hover:text-slate-600 flex items-center gap-1">⚙️ Filters</button>
+            <button class="hover:text-slate-600 flex items-center gap-1">⏳ Expiring Soon</button>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto flex gap-8 p-6">
+        <!-- Modern Sidebar -->
+        <aside class="w-72 flex-shrink-0 sidebar-fixed overflow-y-auto pr-2">
+            <div class="filter-card rounded-2xl p-6 space-y-8">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-display font-bold text-lg">Filters</h3>
+                    <button class="text-slate-400 hover:text-slate-600 text-xs">Reset All</button>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-slate-600">Distance</span>
+                        <span class="text-sm font-bold text-emerald-600">5 km</span>
+                    </div>
+                    <input type="range" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                    <div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase">
+                        <span>0 km</span>
+                        <span>20 km</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Expiry Window</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 text-sm text-slate-600 cursor-pointer group">
+                                <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500 transition-all">
+                                <span class="group-hover:text-slate-900 transition-colors">Under 30 mins</span>
+                            </label>
+                            <label class="flex items-center gap-3 text-sm text-slate-600 cursor-pointer group">
+                                <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500 transition-all">
+                                <span class="group-hover:text-slate-900 transition-colors">Under 2 hrs</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Dietary</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 text-sm text-slate-600 cursor-pointer group">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500 transition-all">
+                                <span class="group-hover:text-slate-900 transition-colors">Vegetarian</span>
+                            </label>
+                            <label class="flex items-center gap-3 text-sm text-slate-600 cursor-pointer group">
+                                <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500 transition-all">
+                                <span class="group-hover:text-slate-900 transition-colors">Vegan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100">
+                    <button class="w-full py-3 btn-primary rounded-xl text-sm">Apply Filters</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Feed Area -->
+        <section class="flex-1">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold font-display text-slate-900 tracking-tight">Available near you</h1>
+                    <p class="text-slate-500 font-medium">48 active listings • Updated just now</p>
+                </div>
+                <div class="bg-white px-4 py-2 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+                    <span class="text-lg">🏆</span>
+                    <span class="text-sm font-medium">You rescued <strong class="text-emerald-600">240 kg</strong> this month</span>
+                </div>
+            </div>
+
+            <div class="mb-10 p-4 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100 rounded-2xl flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3 text-orange-800">
+                    <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-lg">🕒</span>
+                    <span class="text-sm font-medium"><strong class="font-bold">6 urgent listings</strong> expire in the next 30 mins</span>
+                </div>
+                <a href="#" class="text-sm font-bold text-orange-700 hover:text-orange-900 transition-colors flex items-center gap-1">
+                    View Urgent <span class="text-lg">→</span>
+                </a>
+            </div>
+
+            <div class="mb-6">
+                <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    Recommended for your organization
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Card 1 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=500&q=80" alt="Assorted freshly baked breads and pastries" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 22 mins left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 12kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Bakery</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.8 <span class="text-slate-300">(120)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Assorted Fresh Bakery Box</h3>
+                            <p class="text-xs text-slate-500 font-medium">The Daily Bread Co. • 1.8 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🥖 12 pcs</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~12 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹149</span>
+                                    <span class="text-xs text-slate-400 line-through">₹299</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 45 mins left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 10kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Veg Meal</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.5 <span class="text-slate-300">(85)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Packed Veg Thali</h3>
+                            <p class="text-xs text-slate-500 font-medium">Green Bites Kitchen • 2.4 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🍱 20 boxes</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~10 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹79</span>
+                                    <span class="text-xs text-slate-400 line-through">₹159</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 1 hour left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 120kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Vegetables</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.9 <span class="text-slate-300">(210)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Mixed Seasonal Vegetables</h3>
+                            <p class="text-xs text-slate-500 font-medium">Farm Fresh Express • 3.2 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🥦 120 kg</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🚛 Bulk Lot</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹49</span>
+                                    <span class="text-xs text-slate-400 line-through">₹99</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=500&q=80" alt="Colorful assortment of fresh exotic fruits" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 2 hours left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 15kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Fruit</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.7 <span class="text-slate-300">(64)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Exotic Fruit Platter</h3>
+                            <p class="text-xs text-slate-500 font-medium">Tropical Harvest • 4.1 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🍎 5 cases</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~15 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹120</span>
+                                    <span class="text-xs text-slate-400 line-through">₹250</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 30 mins left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 20kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Pizza/Italian</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.6 <span class="text-slate-300">(112)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Artisan Pizza Mix</h3>
+                            <p class="text-xs text-slate-500 font-medium">Bella Italia • 1.2 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🍕 15 Large</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~20 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹89</span>
+                                    <span class="text-xs text-slate-400 line-through">₹199</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" alt="Rich chocolate cake ready to be served in slices" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 5 hours left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 5kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Desserts</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.8 <span class="text-slate-300">(45)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Premium Cake Slices</h3>
+                            <p class="text-xs text-slate-500 font-medium">Sweet Delights • 2.8 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🍰 30 slices</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~5 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹60</span>
+                                    <span class="text-xs text-slate-400 line-through">₹120</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 3 hours left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 18kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Salads</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.7 <span class="text-slate-300">(92)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Organic Quinoa Bowls</h3>
+                            <p class="text-xs text-slate-500 font-medium">Green Leaf Cafe • 0.8 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🥗 12 bowls</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~18 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹110</span>
+                                    <span class="text-xs text-slate-400 line-through">₹240</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=500&q=80" alt="Pao bhaji with buttery bread and spicy vegetable curry" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 12 hours left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 25kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Street Food</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.9 <span class="text-slate-300">(156)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Chicken Zucchini</h3>
+                            <p class="text-xs text-slate-500 font-medium">Grain Store • 5.1 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🍽️ 2 servings</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~25 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹180</span>
+                                    <span class="text-xs text-slate-400 line-through">₹350</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="filter-card rounded-3xl overflow-hidden group">
+                        <div class="relative aspect-square overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="badge badge-expiry font-bold">⏳ 4 hours left</span>
+                                <span class="badge badge-bulk font-bold">📦 NGO Bulk • 12kg</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter px-2 py-1 bg-emerald-50 rounded-md">Breakfast</span>
+                                <span class="text-xs font-medium text-slate-400">⭐ 4.4 <span class="text-slate-300">(77)</span></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors leading-snug">Assorted Breakfast Sandwiches</h3>
+                            <p class="text-xs text-slate-500 font-medium">Morning Glow • 2.1 km</p>
+                            <div class="flex gap-2">
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">🥪 20 pcs</span>
+                                <span class="text-[11px] px-2 py-1 bg-slate-100 text-slate-600 rounded-md font-medium">⚖️ ~12 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-slate-900">₹95</span>
+                                    <span class="text-xs text-slate-400 line-through">₹210</span>
+                                </div>
+                                <button class="btn-primary px-6 py-2.5 rounded-xl text-xs">Request Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo" aria-label="SurplusLink home">
+                        <img src="logo.png" alt="" class="footer-logo-image">
+                        <span>SurplusLink</span>
+                    </a>
+                    <p>Real-time coordination for surplus food.<br>Good food, zero waste, perfect timing.</p>
+                    <div class="footer-socials" aria-label="Social media">
+                        <a href="#" aria-label="SurplusLink on X">X</a>
+                        <a href="#" aria-label="SurplusLink on LinkedIn">in</a>
+                        <a href="#" aria-label="SurplusLink on Instagram">◎</a>
+                    </div>
+                </div>
+
+                <nav class="footer-column" aria-label="Product links">
+                    <h2>Product</h2>
+                    <a href="#">Discover food</a>
+                    <a href="#">Live map</a>
+                    <a href="#">QR handover</a>
+                    <a href="#">Analytics</a>
+                    <a href="#">Pricing</a>
+                </nav>
+
+                <nav class="footer-column" aria-label="Provider links">
+                    <h2>For Providers</h2>
+                    <a href="#">List surplus</a>
+                    <a href="#">Templates</a>
+                    <a href="#">Tax reports</a>
+                    <a href="#">Restaurant guide</a>
+                </nav>
+
+                <nav class="footer-column" aria-label="Recipient links">
+                    <h2>For Recipients</h2>
+                    <a href="#">Find food nearby</a>
+                    <a href="#">Get verified</a>
+                    <a href="#">NGO program</a>
+                    <a href="#">Fair-share policy</a>
+                </nav>
+
+                <nav class="footer-column" aria-label="Company links">
+                    <h2>Company</h2>
+                    <a href="#">About</a>
+                    <a href="#">Safety guidelines</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 SurplusLink. All rights reserved.</p>
+                <span class="footer-language">English (IN)</span>
+                <p class="footer-status"><span></span> System status: all operational</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
