@@ -13,6 +13,174 @@
             top: 88px;
             height: calc(100vh - 100px);
         }
+
+        @media (max-width: 900px) {
+            main.max-w-7xl {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.25rem;
+            }
+
+            .sidebar-fixed {
+                position: static;
+                width: 100%;
+                height: auto;
+                overflow: visible;
+                padding-right: 0;
+            }
+
+            main > .sidebar-fixed {
+                width: 100%;
+            }
+
+            .sidebar-fixed > .filter-card {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+                padding: 1.25rem;
+            }
+
+            .sidebar-fixed > .filter-card > :first-child,
+            .sidebar-fixed > .filter-card > :last-child {
+                grid-column: 1 / -1;
+            }
+
+            .sidebar-fixed > .filter-card > :nth-child(3) {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+
+            .sidebar-fixed > .filter-card > :nth-child(3) > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 0;
+            }
+
+            body > div:nth-of-type(1) {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            body > div:nth-of-type(1) > :first-child {
+                flex-wrap: wrap;
+                row-gap: 0.5rem;
+            }
+
+            body > div:nth-of-type(1) > :first-child > .h-6 {
+                display: none;
+            }
+
+            body > div:nth-of-type(1) > :last-child {
+                flex-wrap: wrap;
+                gap: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .glass-nav > div {
+                flex-wrap: wrap;
+                row-gap: 0.75rem;
+            }
+
+            .glass-nav > div > :first-child {
+                margin-right: auto;
+            }
+
+            .glass-nav > div > :nth-child(2) {
+                order: 3;
+                width: 100%;
+                max-width: none;
+                margin: 0;
+            }
+
+            body > div:nth-of-type(1) {
+                align-items: flex-start;
+                padding: 0.75rem 1rem;
+            }
+
+            body > div:nth-of-type(1) > :first-child {
+                width: 100%;
+            }
+
+            body > div:nth-of-type(1) > :last-child {
+                width: 100%;
+            }
+
+            main.max-w-7xl {
+                padding: 1rem;
+            }
+
+            .sidebar-fixed > .filter-card {
+                padding: 1rem;
+            }
+
+            .flex-1 > div > .grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 1.25rem;
+            }
+
+            .site-footer .footer-inner {
+                padding-right: 1rem;
+                padding-left: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px) {
+            .flex-1 > div > .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-logo {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .glass-nav .text-2xl {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.7rem;
+            }
+
+            body > div:nth-of-type(1) > :first-child > .flex.bg-slate-100 {
+                max-width: 100%;
+            }
+
+            body > div:nth-of-type(1) button {
+                padding-right: 0.65rem;
+                padding-left: 0.65rem;
+            }
+
+            main.max-w-7xl {
+                padding: 0.75rem;
+            }
+
+            .sidebar-fixed > .filter-card {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .sidebar-fixed > .filter-card > :first-child,
+            .sidebar-fixed > .filter-card > :last-child {
+                grid-column: auto;
+            }
+
+            .sidebar-fixed > .filter-card > :nth-child(3) {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .flex-1 > div > .mb-10 {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .flex-1 > div > .mb-10 > a {
+                align-self: flex-end;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-900">
