@@ -1,383 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Reservation Confirmed</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SurplusLink - Reservation Ticket</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#0b7a37',
+              900: '#14532d',
+            }
+          }
         }
-
-        body {
-            font-family: Inter, sans-serif;
-            background: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* HEADER */
-        .header {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 10px;
-        }
-
-        .left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo {
-            width: 28px;
-            height: 28px;
-            background: #22c55e;
-            border-radius: 6px;
-        }
-
-        .status {
-            background: #16a34a;
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .right {
-            font-size: 12px;
-            color: #6b7280;
-            display: flex;
-            gap: 16px;
-        }
-
-        /* CARD */
-        .card {
-            width: 360px;
-            background: #fff;
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
-        }
-
-        /* TOP */
-        .top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-        }
-
-        .top span {
-            font-size: 11px;
-            letter-spacing: 1px;
-            color: #16a34a;
-            font-weight: 600;
-        }
-
-        .badges {
-            display: flex;
-            gap: 6px;
-        }
-
-        .badge {
-            font-size: 10px;
-            padding: 4px 6px;
-            border-radius: 6px;
-        }
-
-        .verified {
-            background: #e6f9ec;
-            color: #16a34a;
-        }
-
-        .offline {
-            background: #e0e7ff;
-            color: #3b82f6;
-        }
-
-        /* QR */
-        .qr {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #f3f4f6;
-            margin: 14px auto;
-            background: url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=SurplusLink') center/cover;
-            border-radius: 8px;
-        }
-
-        /* CODE */
-        .code {
-            text-align: center;
-        }
-
-        .code small {
-            font-size: 10px;
-            color: #6b7280;
-        }
-
-        .code h2 {
-            font-size: 20px;
-            letter-spacing: 4px;
-            margin-top: 4px;
-        }
-
-        /* NOTE */
-        .note {
-            text-align: center;
-            font-size: 11px;
-            color: #9ca3af;
-            margin: 10px 0;
-        }
-
-        /* PICKUP */
-        .pickup {
-            border-top: 1px solid #eee;
-            padding-top: 14px;
-        }
-
-        .pickup-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .pickup small {
-            font-size: 10px;
-            color: #6b7280;
-        }
-
-        .pickup h3 {
-            font-size: 14px;
-            margin: 4px 0;
-        }
-
-        .timer {
-            background: #fde68a;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        /* INFO */
-        .info {
-            background: #f9fafb;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        /* GRID */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .box {
-            background: #f3f4f6;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 11px;
-        }
-
-        /* FOOT */
-        .foot {
-            font-size: 10px;
-            color: #9ca3af;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
-
-        /* WARNING */
-        .warning {
-            font-size: 11px;
-            color: #ef4444;
-            text-align: center;
-            margin: 14px 0 6px;
-        }
-
-        /* BUTTONS */
-        .btn {
-            width: 360px;
-            border-radius: 10px;
-            padding: 12px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .cancel {
-            background: #ef4444;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .direction {
-            background: #fff;
-            border: 1px solid #ddd;
-        }
-
-        /* BOTTOM NAV */
-        .bottom {
-            margin-top: 24px;
-            display: flex;
-            gap: 50px;
-            color: #22c55e;
-            font-size: 18px;
-        }
-
-        /* BASE BUTTON */
-        .btn {
-            width: 360px;
-            border-radius: 10px;
-            padding: 12px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* RED BUTTON */
-        .cancel {
-            background: #ef4444;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        /* WHITE BUTTON */
-        .direction {
-            background: #fff;
-            border: 1px solid #ddd;
-        }
-
-        /* HOVER EFFECT (LIFT + GLOW) */
-        .btn:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* RED BUTTON HOVER */
-        .cancel:hover {
-            background: #dc2626;
-            box-shadow: 0 12px 30px rgba(239, 68, 68, 0.35);
-        }
-
-        /* WHITE BUTTON HOVER */
-        .direction:hover {
-            background: #f9fafb;
-            border-color: #bbb;
-        }
-
-        /* CLICK EFFECT */
-        .btn:active {
-            transform: scale(0.97);
-            box-shadow: none;
-        }
-
-        /* SUBTLE SHINE EFFECT */
-        .btn::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: .5s;
-        }
-
-        .btn:hover::after {
-            left: 100%;
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col md:flex-row">
 
-<body>
+  <!-- Left Navigation Sidebar -->
+  <aside class="w-full md:w-16 lg:w-20 bg-white border-r border-slate-200 flex md:flex-col items-center justify-between md:justify-start py-3 px-4 md:py-6 md:px-0 shrink-0 sticky top-0 z-50 h-auto md:h-screen">
+    <!-- Brand Logo Icon -->
+    <a href="#" class="mb-0 md:mb-8 hover:opacity-85 transition-opacity p-1.5" title="SurplusLink">
+      <img src="../Confirmation_Page/logo.png">
+        <defs>
+          <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#15803d"/>
+            <stop offset="65%" stop-color="#16a34a"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+          </linearGradient>
+          <linearGradient id="handGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f97316"/>
+            <stop offset="100%" stop-color="#eab308"/>
+          </linearGradient>
+        </defs>
+        <!-- Heart/Handshake Leaf Shape -->
+        <path d="M 46 14 C 28 14 12 28 12 48 C 12 68 32 82 50 92 C 68 82 88 68 88 48 C 88 32 80 18 64 18 C 55 18 48 24 45 31 Z" fill="none" stroke="url(#brandGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Handshake / Wrist Inner Overlay -->
+        <path d="M 33 53 L 48 38 C 53 33 60 33 65 38 L 82 55 C 85 58 80 65 74 61 L 52 45 C 49 42 45 44 45 48 L 58 61 C 62 65 58 72 52 68 L 42 58" fill="none" stroke="url(#brandGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 37 54 L 56 36 C 58 34 62 36 60 40 L 46 54" stroke="url(#handGrad)" stroke-width="7" stroke-linecap="round"/>
+        <!-- Clock Icon Accent -->
+        <path d="M 66 30 L 66 38 L 73 42" stroke="#15803d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
 
-    <div class="card">
+    <!-- Navigation Icons -->
+    <nav class="flex md:flex-col gap-1 md:gap-6 w-auto md:w-full items-center">
+      <a href="#" class="p-3 rounded-xl text-slate-400 hover:text-brand-800 hover:bg-emerald-50 transition-all text-lg flex items-center justify-center w-10 h-10 md:w-12 md:h-12" title="Dashboard">
+        <i class="fa-regular fa-clipboard"></i>
+      </a>
+      <a href="#" class="p-3 rounded-xl text-brand-800 bg-emerald-50 transition-all text-lg flex items-center justify-center w-10 h-10 md:w-12 md:h-12 font-bold" title="Settings / Active Reservation">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+      <a href="#" class="p-3 rounded-xl text-slate-400 hover:text-brand-800 hover:bg-emerald-50 transition-all text-lg flex items-center justify-center w-10 h-10 md:w-12 md:h-12" title="Orders">
+        <i class="fa-solid fa-receipt"></i>
+      </a>
+      <a href="#" class="p-3 rounded-xl text-slate-400 hover:text-brand-800 hover:bg-emerald-50 transition-all text-lg flex items-center justify-center w-10 h-10 md:w-12 md:h-12" title="Profile">
+        <i class="fa-regular fa-face-smile"></i>
+      </a>
+      <a href="#" class="p-3 rounded-xl text-slate-400 hover:text-brand-800 hover:bg-emerald-50 transition-all text-lg flex items-center justify-center w-10 h-10 md:w-12 md:h-12" title="Analytics">
+        <i class="fa-solid fa-chart-simple"></i>
+      </a>
+    </nav>
 
-        <div class="top">
-            <span>CONFIRMED RESERVATION</span>
-            <div class="badges">
-                <div class="badge verified">Verified</div>
-                <div class="badge offline">Available Offline</div>
-            </div>
-        </div>
-
-        <div class="qr"></div>
-
-        <div class="code">
-            <small>Backup Code — Show this if QR fails</small>
-            <h2>A7K-9P2</h2>
-        </div>
-
-        <div class="note">
-            This ticket works offline. Screenshot or keep this screen open.
-        </div>
-
-        <div class="pickup">
-            <div class="pickup-top">
-                <div>
-                    <small>PICKUP WINDOW</small>
-                    <h3>Pick up between 2:00 PM – 2:30 PM</h3>
-                    <small>Today · GreenLeaf Cafe · 1.2 km away</small>
-                </div>
-                <div class="timer">14:38</div>
-            </div>
-
-            <div class="info">
-                Reserved: 8 Vegetarian Meals<br>
-                From: GreenLeaf Cafe
-            </div>
-
-            <div class="grid">
-                <div class="box">
-                    <strong>Recipient</strong><br>
-                    Maya Rivera
-                </div>
-                <div class="box">
-                    <strong>Provider</strong><br>
-                    GreenLeaf Cafe
-                </div>
-            </div>
-
-            <div class="foot">
-                <span>Reserved at 1:42 PM</span>
-                <span>Ticket ID #SL-48291</span>
-            </div>
-        </div>
-
+    <!-- Sidebar Bottom Status -->
+    <div class="hidden md:flex mt-auto mb-2">
+      <div class="w-2 h-2 rounded-full bg-brand-600"></div>
     </div>
+  </aside>
 
-    <div class="warning">
-        Cannot make it? Cancel now so the food can go to someone else.
-    </div>
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col min-w-0 min-h-screen">
+    
+    <!-- Top Header -->
+    <header class="bg-white border-b border-slate-200 h-16 px-4 md:px-8 flex items-center justify-between sticky top-0 z-40">
+      <h1 class="text-xl font-bold text-slate-900 tracking-tight">Reservation</h1>
+      
+      <div class="flex items-center gap-4">
+        <!-- Online Badge -->
+        <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full text-xs font-semibold text-emerald-800">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+          Online
+        </div>
 
-    <button class="btn cancel">Cancel & Release Food</button>
-    <button class="btn direction">Get Directions</button>
+        <!-- Notification Bell -->
+        <button class="relative p-2 text-slate-500 hover:text-slate-800 rounded-lg hover:bg-slate-100 transition-colors" title="Notifications">
+          <i class="fa-regular fa-bell text-lg"></i>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-600 rounded-full"></span>
+        </button>
 
-    <div class="bottom">
-        <span>🏠</span>
-        <span>📷</span>
-        <span>💬</span>
-    </div>
+        <!-- User Avatar -->
+        <div class="w-9 h-9 rounded-full bg-brand-800 text-white font-bold text-xs flex items-center justify-center ring-2 ring-emerald-100 shadow-sm cursor-pointer hover:bg-brand-700 transition-colors">
+          AR
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Body -->
+    <main class="flex-1 p-4 md:p-8 lg:p-10 max-w-7xl w-full mx-auto">
+      
+      <!-- Page Subheader -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <span class="text-xs font-bold tracking-wider text-brand-700 uppercase block mb-1">RESERVATION CONFIRMED</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Your pickup ticket</h2>
+          <p class="text-sm text-slate-500 mt-1">Show this at the counter to collect your reserved food.</p>
+        </div>
+        
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            Reserved
+          </span>
+        </div>
+      </div>
+
+      <!-- Desktop Two-Column Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT COLUMN: Merchant & Details -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Ticket Details Card -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden p-6 md:p-8 hover:shadow-md transition-shadow">
+            
+            <!-- Store Header -->
+            <div class="flex items-start justify-between border-b border-slate-100 pb-6 mb-6">
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Green Bowl Kitchen</h3>
+                <div class="flex items-center gap-1.5 text-xs font-medium text-slate-500 mb-2">
+                  <i class="fa-solid fa-location-dot text-brand-700"></i>
+                  Navrangpura, Ahmedabad
+                </div>
+                <span class="inline-flex items-center gap-1.5 bg-slate-100 border border-slate-200 text-slate-700 text-xs px-2.5 py-1 rounded-full font-medium">
+                  <i class="fa-regular fa-circle-check text-brand-700"></i>
+                  Verified provider
+                </span>
+              </div>
+              
+              <div class="text-right bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl">
+                <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">RESERVATION</span>
+                <span class="text-sm font-extrabold text-slate-900 font-mono">SL-2406-B10</span>
+              </div>
+            </div>
+
+            <!-- Pickup Window Box -->
+            <div class="bg-emerald-50/70 border border-emerald-200/80 rounded-xl p-5 mb-4">
+              <span class="text-[11px] font-extrabold text-brand-800 uppercase tracking-wider block mb-1">PICKUP WINDOW</span>
+              <div class="text-lg font-bold text-slate-900 mb-0.5">Pick up between 2:00 PM – 2:30 PM</div>
+              <div class="text-xs font-medium text-slate-600">Today · Tuesday, 18 June</div>
+            </div>
+
+            <!-- Meals Reserved Box -->
+            <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 mb-8">
+              <div class="text-base font-bold text-slate-900 mb-1">12 meals reserved</div>
+              <div class="text-xs text-slate-500">Vegetarian rice bowls - 12 portions</div>
+            </div>
+
+            <!-- Pickup Details Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-slate-100">
+              <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
+                <h4 class="text-xs font-bold text-slate-900 mb-1">Pickup location</h4>
+                <p class="text-xs text-slate-600 font-medium">Green Bowl Kitchen · 14 C.G. Road</p>
+              </div>
+              <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
+                <h4 class="text-xs font-bold text-slate-900 mb-1">Bring</h4>
+                <p class="text-xs text-slate-600 font-medium">This ticket + a clean container</p>
+              </div>
+            </div>
+
+            <!-- Safety Note -->
+            <div class="mt-6 flex items-start gap-2 text-xs text-slate-400 bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <i class="fa-solid fa-circle-info text-slate-400 mt-0.5"></i>
+              <span>Please arrive during the pickup window so the food can be handed over safely.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Custom Green QR Code & Backup Code Card -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+            
+            <p class="text-xs font-semibold text-slate-500 mb-4">Scan to verify pickup</p>
+            
+            <!-- Custom QR Code Block -->
+            <div class="bg-white p-3 rounded-2xl border-2 border-emerald-100 shadow-sm mb-4 inline-block">
+              <!-- Recreated Custom Brand QR SVG -->
+              <img src="qr.png">
+                <!-- Top-Left Target -->
+                <rect x="8" y="8" width="54" height="54" rx="10" fill="none" stroke="currentColor" stroke-width="8"/>
+                <rect x="22" y="22" width="26" height="26" rx="6" fill="currentColor"/>
+                
+                <!-- Top-Right Target -->
+                <rect x="138" y="8" width="54" height="54" rx="10" fill="none" stroke="currentColor" stroke-width="8"/>
+                <rect x="152" y="22" width="26" height="26" rx="6" fill="currentColor"/>
+                
+                <!-- Bottom-Left Target -->
+                <rect x="8" y="138" width="54" height="54" rx="10" fill="none" stroke="currentColor" stroke-width="8"/>
+                <rect x="22" y="152" width="26" height="26" rx="6" fill="currentColor"/>
+
+                <!-- Custom Data Matrix Blocks -->
+                <rect x="70" y="10" width="10" height="10" rx="2"/><rect x="85" y="10" width="20" height="10" rx="2"/><rect x="115" y="10" width="10" height="10" rx="2"/>
+                <rect x="70" y="25" width="25" height="10" rx="2"/><rect x="105" y="25" width="10" height="20" rx="2"/>
+                <rect x="70" y="40" width="10" height="20" rx="2"/><rect x="88" y="48" width="12" height="12" rx="2"/><rect x="120" y="40" width="10" height="20" rx="2"/>
+
+                <rect x="10" y="70" width="20" height="10" rx="2"/><rect x="38" y="70" width="10" height="20" rx="2"/>
+                <rect x="10" y="88" width="10" height="20" rx="2"/><rect x="28" y="98" width="20" height="10" rx="2"/>
+                <rect x="10" y="115" width="20" height="10" rx="2"/><rect x="38" y="115" width="10" height="10" rx="2"/>
+
+                <rect x="140" y="70" width="10" height="20" rx="2"/><rect x="160" y="70" width="30" height="10" rx="2"/>
+                <rect x="155" y="88" width="15" height="15" rx="2"/><rect x="180" y="88" width="10" height="25" rx="2"/>
+                <rect x="140" y="115" width="25" height="10" rx="2"/><rect x="175" y="120" width="15" height="10" rx="2"/>
+
+                <rect x="70" y="140" width="10" height="20" rx="2"/><rect x="90" y="140" width="25" height="10" rx="2"/><rect x="125" y="140" width="10" height="10" rx="2"/>
+                <rect x="70" y="165" width="30" height="10" rx="2"/><rect x="110" y="155" width="10" height="25" rx="2"/>
+                <rect x="70" y="180" width="10" height="10" rx="2"/><rect x="90" y="180" width="25" height="10" rx="2"/>
+
+                <!-- Bottom Alignment Point -->
+                <rect x="145" y="145" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="6"/>
+                <rect x="154" y="154" width="8" height="8" rx="2" fill="currentColor"/>
+
+                <rect x="180" y="145" width="10" height="20" rx="2"/>
+                <rect x="140" y="178" width="25" height="10" rx="2"/>
+                <rect x="175" y="178" width="15" height="10" rx="2"/>
+
+                <!-- Center Logo Clearance Badge with SurplusLink Emblem -->
+                <rect x="64" y="64" width="72" height="72" rx="16" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+                
+                <!-- Center Heart-Handshake Logo -->
+                <g transform="translate(72, 72) scale(0.56)">
+                  <path d="M 46 14 C 28 14 12 28 12 48 C 12 68 32 82 50 92 C 68 82 88 68 88 48 C 88 32 80 18 64 18 C 55 18 48 24 45 31 Z" fill="none" stroke="#15803d" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 33 53 L 48 38 C 53 33 60 33 65 38 L 82 55 C 85 58 80 65 74 61 L 52 45 C 49 42 45 44 45 48 L 58 61 C 62 65 58 72 52 68 L 42 58" fill="none" stroke="#15803d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 37 54 L 56 36 C 58 34 62 36 60 40 L 46 54" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M 66 30 L 66 38 L 73 42" stroke="#15803d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Offline Tag -->
+            <div class="flex items-center gap-2 text-xs text-slate-500 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200/60 mb-6">
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-md">Available offline</span>
+              <span>This ticket is saved on your device</span>
+            </div>
+
+            <!-- Backup Code Section -->
+            <div class="w-full border-t border-slate-100 pt-6">
+              <span class="text-[10px] uppercase font-extrabold text-slate-400 tracking-wider block mb-1">BACKUP CODE</span>
+              <div class="text-2xl font-black text-slate-900 tracking-widest font-mono mb-1">A 7 K 9 - 2 M</div>
+              <p class="text-xs text-slate-400">Use this if scanning is unavailable</p>
+            </div>
+
+          </div>
+
+          <!-- Order More CTA Card -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 text-center">
+            <p class="text-xs font-medium text-slate-600 mb-3">Did you enjoy this store? Want to order more?</p>
+            <button class="w-full bg-brand-800 hover:bg-brand-700 active:bg-brand-900 text-white font-bold py-3 px-4 rounded-xl shadow-sm hover:shadow transition-all text-xs tracking-wider flex items-center justify-center gap-2 uppercase">
+              <i class="fa-solid fa-bag-shopping text-sm"></i>
+              ORDER MORE
+            </button>
+          </div>
+
+          <!-- Back Link -->
+          <div class="text-center pt-2">
+            <a href="#" class="text-xs font-bold text-brand-800 hover:text-brand-700 transition-colors inline-flex items-center gap-1.5 hover:underline">
+              <i class="fa-solid fa-arrow-left text-[10px]"></i>
+              Back to Nearby Surplus
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-16 pt-12 pb-8 px-4 md:px-8">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-slate-100">
+          
+          <!-- Brand Column -->
+          <div class="md:col-span-5 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="../Confirmation_Page/logo.png" height="30px" width="30px">
+                <path d="M 46 14 C 28 14 12 28 12 48 C 12 68 32 82 50 92 C 68 82 88 68 88 48 C 88 32 80 18 64 18 C 55 18 48 24 45 31 Z" fill="none" stroke="#15803d" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 33 53 L 48 38 C 53 33 60 33 65 38 L 82 55 C 85 58 80 65 74 61 L 52 45 C 49 42 45 44 45 48 L 58 61 C 62 65 58 72 52 68 L 42 58" fill="none" stroke="#15803d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 37 54 L 56 36 C 58 34 62 36 60 40 L 46 54" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 66 30 L 66 38 L 73 42" stroke="#15803d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-lg font-bold text-slate-900">SurplusLink</span>
+            </div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Good Food. Less Waste.</p>
+            <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+              Discover surplus meals near you, claim verified offers, and help reduce food waste with every pickup.
+            </p>
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3 pt-2">
+              <a href="#" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-brand-800 hover:text-white transition-colors flex items-center justify-center text-xs">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="#" class="fa-brands fa-linkedin-in w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-brand-800 hover:text-white transition-colors flex items-center justify-center text-xs"></a>
+              <a href="#" class="fa-brands fa-x-twitter w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-brand-800 hover:text-white transition-colors flex items-center justify-center text-xs"></a>
+            </div>
+          </div>
+
+          <!-- Navigation Columns -->
+          <div class="md:col-span-7 grid grid-cols-3 gap-4">
+            <div>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Company</h5>
+              <ul class="space-y-2 text-xs text-slate-500">
+                <li><a href="#" class="hover:text-brand-800 transition-colors">About Us</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Our Mission</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Careers</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Press</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Support</h5>
+              <ul class="space-y-2 text-xs text-slate-500">
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Help Center</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Contact Us</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">FAQ</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Safety</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Legal</h5>
+              <ul class="space-y-2 text-xs text-slate-500">
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Terms of Service</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Cookie Policy</a></li>
+                <li><a href="#" class="hover:text-brand-800 transition-colors">Accessibility</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+          <p>© 2026 SurplusLink. All rights reserved.</p>
+          <div class="flex items-center gap-6">
+            <a href="#" class="hover:text-slate-600 transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-slate-600 transition-colors">Terms of Service</a>
+            <a href="#" class="hover:text-slate-600 transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
 
 </body>
-
 </html>
