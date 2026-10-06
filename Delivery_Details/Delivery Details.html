@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Confirmed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 10px;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 28px;
+            height: 28px;
+            background: #22c55e;
+            border-radius: 6px;
+        }
+
+        .status {
+            background: #16a34a;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .right {
+            font-size: 12px;
+            color: #6b7280;
+            display: flex;
+            gap: 16px;
+        }
+
+        /* CARD */
+        .card {
+            width: 360px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+        }
+
+        /* TOP */
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .top span {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .badges {
+            display: flex;
+            gap: 6px;
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 4px 6px;
+            border-radius: 6px;
+        }
+
+        .verified {
+            background: #e6f9ec;
+            color: #16a34a;
+        }
+
+        .offline {
+            background: #e0e7ff;
+            color: #3b82f6;
+        }
+
+        /* QR */
+        .qr {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #f3f4f6;
+            margin: 14px auto;
+            background: url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=SurplusLink') center/cover;
+            border-radius: 8px;
+        }
+
+        /* CODE */
+        .code {
+            text-align: center;
+        }
+
+        .code small {
+            font-size: 10px;
+            color: #6b7280;
+        }
+
+        .code h2 {
+            font-size: 20px;
+            letter-spacing: 4px;
+            margin-top: 4px;
+        }
+
+        /* NOTE */
+        .note {
+            text-align: center;
+            font-size: 11px;
+            color: #9ca3af;
+            margin: 10px 0;
+        }
+
+        /* PICKUP */
+        .pickup {
+            border-top: 1px solid #eee;
+            padding-top: 14px;
+        }
+
+        .pickup-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pickup small {
+            font-size: 10px;
+            color: #6b7280;
+        }
+
+        .pickup h3 {
+            font-size: 14px;
+            margin: 4px 0;
+        }
+
+        .timer {
+            background: #fde68a;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* INFO */
+        .info {
+            background: #f9fafb;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .box {
+            background: #f3f4f6;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 11px;
+        }
+
+        /* FOOT */
+        .foot {
+            font-size: 10px;
+            color: #9ca3af;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        /* WARNING */
+        .warning {
+            font-size: 11px;
+            color: #ef4444;
+            text-align: center;
+            margin: 14px 0 6px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            width: 360px;
+            border-radius: 10px;
+            padding: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .cancel {
+            background: #ef4444;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .direction {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        /* BOTTOM NAV */
+        .bottom {
+            margin-top: 24px;
+            display: flex;
+            gap: 50px;
+            color: #22c55e;
+            font-size: 18px;
+        }
+
+        /* BASE BUTTON */
+        .btn {
+            width: 360px;
+            border-radius: 10px;
+            padding: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* RED BUTTON */
+        .cancel {
+            background: #ef4444;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        /* WHITE BUTTON */
+        .direction {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        /* HOVER EFFECT (LIFT + GLOW) */
+        .btn:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* RED BUTTON HOVER */
+        .cancel:hover {
+            background: #dc2626;
+            box-shadow: 0 12px 30px rgba(239, 68, 68, 0.35);
+        }
+
+        /* WHITE BUTTON HOVER */
+        .direction:hover {
+            background: #f9fafb;
+            border-color: #bbb;
+        }
+
+        /* CLICK EFFECT */
+        .btn:active {
+            transform: scale(0.97);
+            box-shadow: none;
+        }
+
+        /* SUBTLE SHINE EFFECT */
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: .5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="top">
+            <span>CONFIRMED RESERVATION</span>
+            <div class="badges">
+                <div class="badge verified">Verified</div>
+                <div class="badge offline">Available Offline</div>
+            </div>
+        </div>
+
+        <div class="qr"></div>
+
+        <div class="code">
+            <small>Backup Code — Show this if QR fails</small>
+            <h2>A7K-9P2</h2>
+        </div>
+
+        <div class="note">
+            This ticket works offline. Screenshot or keep this screen open.
+        </div>
+
+        <div class="pickup">
+            <div class="pickup-top">
+                <div>
+                    <small>PICKUP WINDOW</small>
+                    <h3>Pick up between 2:00 PM – 2:30 PM</h3>
+                    <small>Today · GreenLeaf Cafe · 1.2 km away</small>
+                </div>
+                <div class="timer">14:38</div>
+            </div>
+
+            <div class="info">
+                Reserved: 8 Vegetarian Meals<br>
+                From: GreenLeaf Cafe
+            </div>
+
+            <div class="grid">
+                <div class="box">
+                    <strong>Recipient</strong><br>
+                    Maya Rivera
+                </div>
+                <div class="box">
+                    <strong>Provider</strong><br>
+                    GreenLeaf Cafe
+                </div>
+            </div>
+
+            <div class="foot">
+                <span>Reserved at 1:42 PM</span>
+                <span>Ticket ID #SL-48291</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="warning">
+        Cannot make it? Cancel now so the food can go to someone else.
+    </div>
+
+    <button class="btn cancel">Cancel & Release Food</button>
+    <button class="btn direction">Get Directions</button>
+
+    <div class="bottom">
+        <span>🏠</span>
+        <span>📷</span>
+        <span>💬</span>
+    </div>
+
+</body>
+
+</html>
