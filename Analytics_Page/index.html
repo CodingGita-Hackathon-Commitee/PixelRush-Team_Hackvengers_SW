@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f5f8fc">
+	<meta name="description" content="SurplusLink impact dashboard — track food rescued, meals shared, and environmental impact.">
+	<title>Impact Dashboard — SurplusLink</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header class="topbar">
+		<a class="brand" href="#top" aria-label="SurplusLink home">
+			<img class="brand-logo" src="logo.png" alt="">
+			<span>SurplusLink</span>
+		</a>
+		<span class="header-divider"></span>
+		<span class="page-label">Impact Dashboard</span>
+		<nav class="period-switch" aria-label="Dashboard time period">
+			<button class="period-btn active" data-period="This Week">This Week</button>
+			<button class="period-btn" data-period="This Month">This Month</button>
+			<button class="period-btn" data-period="This Quarter">This Quarter</button>
+			<button class="period-btn" data-period="This Year">This Year</button>
+			<button class="period-btn" data-period="Custom">Custom</button>
+		</nav>
+		<div class="header-actions">
+			<button class="button button-light" id="exportBtn" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m0 0 3-3m-3 3L7 9M4 14v2h12v-2"/></svg><span>Export PDF</span></button>
+			<button class="button button-green" id="shareBtn" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 6.5 7 10l5.5 3.5M15 10H7"/><circle cx="15" cy="4.5" r="2"/><circle cx="5" cy="10" r="2"/><circle cx="15" cy="15.5" r="2"/></svg><span>Share Impact</span></button>
+		</div>
+	</header>
+
+	<main class="dashboard" id="top">
+		<div class="section-kicker">MONTHLY IMPACT OVERVIEW</div>
+		<section class="overview-card" aria-label="Food rescue overview">
+			<div class="total-block">
+				<span class="growth-pill"><span aria-hidden="true">↗</span> +18% vs last month</span>
+				<div class="total-row"><strong>1,284</strong><span>Total Meals Saved</span></div>
+			</div>
+			<div class="overview-stat"><span>Food Listed</span><strong>1,610 <small>+12%</small></strong></div>
+			<div class="overview-stat"><span>Rescue Rate</span><strong>79.8% <small>+4.6%</small></strong></div>
+			<div class="overview-stat"><span>Active Recipients</span><strong>47 <small class="gold">+3</small></strong></div>
+		</section>
+
+		<div class="dashboard-grid">
+			<div class="left-column">
+				<section class="panel volume-panel">
+					<div class="panel-heading">
+						<div><h1>Food Listed vs Rescued vs<br class="desktop-break"> Expired</h1><p>Monthly volume across the last 8 weeks</p></div>
+						<button class="text-button" id="detailsBtn" type="button">View details <span aria-hidden="true">↗</span></button>
+					</div>
+					<div class="legend" aria-label="Chart legend">
+						<span><i class="dot blue"></i>Food Listed</span><span><i class="dot green"></i>Food Rescued</span><span><i class="dot red"></i>Expired / Unclaimed</span>
+					</div>
+					<div class="chart-wrap bar-chart" role="img" aria-label="Bar chart showing food listed, rescued and expired over eight weeks">
+						<div class="y-labels"><span>240</span><span>180</span><span>120</span><span>60</span><span>0</span></div>
+						<div class="chart-content">
+							<div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+							<div class="bar-groups">
+								<div class="bar-group" tabindex="0" aria-label="Mar 4: 150 listed, 94 rescued, 18 expired"><i class="bar listed" style="--height:62.5%"></i><i class="bar rescued" style="--height:39%"></i><i class="bar expired" style="--height:7.5%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Mar 11: 180 listed, 125 rescued, 17 expired"><i class="bar listed" style="--height:75%"></i><i class="bar rescued" style="--height:52%"></i><i class="bar expired" style="--height:7%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Mar 18: 165 listed, 110 rescued, 15 expired"><i class="bar listed" style="--height:69%"></i><i class="bar rescued" style="--height:46%"></i><i class="bar expired" style="--height:6%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Mar 25: 205 listed, 150 rescued, 19 expired"><i class="bar listed" style="--height:85%"></i><i class="bar rescued" style="--height:62.5%"></i><i class="bar expired" style="--height:8%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Apr 1: 190 listed, 132 rescued, 22 expired"><i class="bar listed" style="--height:79%"></i><i class="bar rescued" style="--height:55%"></i><i class="bar expired" style="--height:9%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Apr 8: 230 listed, 177 rescued, 20 expired"><i class="bar listed" style="--height:96%"></i><i class="bar rescued" style="--height:74%"></i><i class="bar expired" style="--height:8%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Apr 15: 215 listed, 165 rescued, 18 expired"><i class="bar listed" style="--height:90%"></i><i class="bar rescued" style="--height:69%"></i><i class="bar expired" style="--height:7.5%"></i></div>
+								<div class="bar-group" tabindex="0" aria-label="Apr 22: 250 listed, 195 rescued, 20 expired"><i class="bar listed" style="--height:100%"></i><i class="bar rescued" style="--height:81%"></i><i class="bar expired" style="--height:8%"></i></div>
+							</div>
+							<div class="x-labels"><span>Mar 4</span><span>Mar 11</span><span>Mar 18</span><span>Mar 25</span><span>Apr 1</span><span>Apr 8</span><span>Apr 15</span><span>Apr 22</span></div>
+						</div>
+					</div>
+					<div class="insight-strip"><span aria-hidden="true">⌁</span> You rescued 18% more meals than last period.</div>
+				</section>
+
+				<section class="panel peak-panel">
+					<div class="panel-heading"><div><h2>Peak Surplus Times</h2><p>Average surplus volume by hour of day</p></div></div>
+					<div class="line-chart" role="img" aria-label="Surplus peaks at noon and early afternoon">
+						<div class="line-y"><span>60</span><span>40</span><span>20</span><span>0</span></div>
+						<div class="line-plot">
+							<div class="line-grid"><i></i><i></i><i></i><i></i></div>
+							<svg class="line-svg" viewBox="0 0 660 110" preserveAspectRatio="none" aria-hidden="true"><path class="area-path" d="M0 76 L66 67 L132 55 L198 18 L264 0 L330 12 L396 43 L396 110 L0 110 Z"/><path class="data-path" d="M0 76 L66 67 L132 55 L198 18 L264 0 L330 12 L396 43"/><circle cx="264" cy="0" r="4"/></svg>
+							<span class="peak-tag">Peak window</span>
+							<div class="line-x"><span>8 AM</span><span>10 AM</span><span>12 PM</span><span>2 PM</span><span>4 PM</span><span>6 PM</span><span>8 PM</span></div>
+						</div>
+					</div>
+					<div class="chart-note"><span>◉</span> Highest surplus usually between 2:00–4:00 PM</div>
+				</section>
+			</div>
+
+			<aside class="right-column">
+				<section class="panel environment-card">
+					<h2>Environmental Impact</h2>
+					<div class="environment-main">
+						<img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=120&q=80" alt="Community volunteer" class="volunteer-photo">
+						<div><div class="tonnes">3.2 tons <span>CO₂e Prevented</span></div><div class="green-caption">↗ +22% vs last month</div></div>
+					</div>
+					<p class="equivalent">Equivalent to 14 trees planted or 7,800 km not driven</p>
+					<div class="progress-label"><span>Monthly CSR goal</span><strong>64%</strong></div>
+					<div class="progress-track"><span></span></div>
+					<p class="goal-note">5.0 tons target · 1.8 tons to go</p>
+				</section>
+
+				<section class="panel recipients-card">
+					<h2>Top Recipients This Month</h2>
+					<ol class="recipient-list">
+						<li><span class="rank">1</span><span class="recipient-avatar mint">HC</span><span class="recipient-name">Hope Community<br>Kitchen</span><span class="meals">312 meals</span><span class="verified">Verified</span></li>
+						<li><span class="rank">2</span><span class="recipient-avatar sky">CS</span><span class="recipient-name">City Shelter<br>Network</span><span class="meals">247 meals</span><span class="verified">Verified</span></li>
+						<li><span class="rank">3</span><span class="recipient-avatar butter">GN</span><span class="recipient-name">Good Neighbors<br>Pantry</span><span class="meals">198 meals</span><span class="verified">Verified</span></li>
+						<li><span class="rank">4</span><span class="recipient-avatar mint">OT</span><span class="recipient-name">Open Table<br>Outreach</span><span class="meals">164 meals</span><span class="verified">Verified</span></li>
+						<li><span class="rank">5</span><span class="recipient-avatar rose">SC</span><span class="recipient-name">Sunrise Community<br>Hub</span><span class="meals">121 meals</span><span class="verified">Verified</span></li>
+					</ol>
+					<button class="recipients-link" id="recipientsBtn" type="button">View all recipients <span>→</span></button>
+				</section>
+			</aside>
+		</div>
+
+		<section class="bottom-stats" aria-label="Additional impact metrics">
+			<article class="panel mini-stat"><span class="mini-label">Average Pickup Time</span><strong>28 min <span class="clock-icon">◷</span></strong><small>−6 min vs last month</small></article>
+			<article class="panel mini-stat"><span class="mini-label">Most Rescued Category</span><strong>Prepared Meals <span class="cutlery">♜</span></strong><small>62% of meals&nbsp; · &nbsp;<b>+8%</b></small></article>
+			<article class="panel mini-stat"><span class="mini-label">Zero-Waste Streak</span><strong>12 days <span class="sparkle">✣</span></strong><small>with &lt;5% expiration <em>Personal best</em></small></article>
+		</section>
+		<footer class="dashboard-footer"><span></span> Impact data updated today at 9:42 AM</footer>
+	</main>
+
+	<footer class="site-footer">
+		<div class="footer-inner">
+			<div class="footer-main">
+				<div class="footer-brand">
+					<a href="#top" class="footer-logo" aria-label="SurplusLink home">
+						<img src="logo.png" alt="" class="footer-logo-image">
+						<span>SurplusLink</span>
+					</a>
+					<p>Real-time coordination for surplus food.<br>Good food, zero waste, perfect timing.</p>
+					<div class="footer-socials" aria-label="Social media">
+						<a href="#" aria-label="SurplusLink on X">X</a>
+						<a href="#" aria-label="SurplusLink on LinkedIn">in</a>
+						<a href="#" aria-label="SurplusLink on Instagram">◎</a>
+					</div>
+				</div>
+
+				<nav class="footer-column" aria-label="Product links">
+					<h2>Product</h2>
+					<a href="#">Discover food</a>
+					<a href="#">Live map</a>
+					<a href="#">QR handover</a>
+					<a href="#top">Analytics</a>
+					<a href="#">Pricing</a>
+				</nav>
+
+				<nav class="footer-column" aria-label="Provider links">
+					<h2>For Providers</h2>
+					<a href="#">List surplus</a>
+					<a href="#">Templates</a>
+					<a href="#">Tax reports</a>
+					<a href="#">Restaurant guide</a>
+				</nav>
+
+				<nav class="footer-column" aria-label="Recipient links">
+					<h2>For Recipients</h2>
+					<a href="#">Find food nearby</a>
+					<a href="#">Get verified</a>
+					<a href="#">NGO program</a>
+					<a href="#">Fair-share policy</a>
+				</nav>
+
+				<nav class="footer-column" aria-label="Company links">
+					<h2>Company</h2>
+					<a href="#">About</a>
+					<a href="#">Safety guidelines</a>
+					<a href="#">Privacy</a>
+					<a href="#">Terms</a>
+				</nav>
+			</div>
+
+			<div class="footer-bottom">
+				<p>© 2025 SurplusLink. All rights reserved.</p>
+				<span class="footer-language">English (IN)</span>
+				<p class="footer-status"><span></span> System status: all operational</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
